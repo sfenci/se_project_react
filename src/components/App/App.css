@@ -1,0 +1,8 @@
+.app {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+}
