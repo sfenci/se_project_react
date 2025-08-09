@@ -1,0 +1,32 @@
+/* need to add fonts and colors to the header component */
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin-right: 24px;
+}
+
+.header_date-location {
+  margin: 0;
+  padding-top: 11px;
+}
+
+.header__user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__add-clothes-btn {
+  margin: 0px 20px 0px auto;
+  border: none;
+}
+
+.header__username {
+  margin: 0;
+}
