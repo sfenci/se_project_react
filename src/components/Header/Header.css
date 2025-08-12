@@ -3,6 +3,7 @@
 .header {
   display: flex;
   align-items: center;
+  height: 40px;
 }
 
 .header__logo {
@@ -11,9 +12,9 @@
   margin-right: 24px;
 }
 
-.header_date-location {
+.header__date-location {
   margin: 0;
-  padding-top: 11px;
+  padding: 11px 0 5px;
 }
 
 .header__user-container {
@@ -25,6 +26,7 @@
 .header__add-clothes-btn {
   margin: 0px 20px 0px auto;
   border: none;
+  padding: 0px;
 }
 
 .header__username {

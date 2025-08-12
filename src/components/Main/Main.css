@@ -1,8 +1,13 @@
+.cards__text {
+  margin: 40px 0 34px;
+}
+
 .cards__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); */
   gap: 20px;
   list-style-type: none;
   padding: 0;
   margin: 34px 0 0;
+  display: flex;
 }

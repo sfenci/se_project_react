@@ -17,6 +17,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [selectedWeatherBtn, setSelectedWeatherBtn] = useState("");
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -45,19 +46,21 @@ function App() {
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Footer />
       </div>
       <ModalWithForm
         buttonText="Add garment"
         title="New garment"
         activeModal={activeModal}
         onClose={closeActiveModal}
+        selectedWeatherBtn={selectedWeatherBtn}
       >
         <label htmlFor="name" className="modal__label">
           Name{" "}
           <input
             id="name"
             type="text"
-            placeholder="name"
+            placeholder="Name"
             className="modal__input"
           />
         </label>
@@ -72,22 +75,65 @@ function App() {
         </label>
         <fieldset className="modal__radio-btns">
           <legend className="modal__legend">Select the weather type:</legend>
-          <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input id="hot" type="radio" className="modal__radio-input" />
+          <label
+            htmlFor="hot"
+            className={`modal__label modal__label_type_radio${
+              selectedWeatherBtn === "hot" ? " modal__label_active" : ""
+            }`}
+          >
+            <input
+              id="hot"
+              type="radio"
+              className={`modal__radio-input${
+                selectedWeatherBtn === "hot" ? " modal__input_active" : ""
+              }`}
+              checked={selectedWeatherBtn === "hot"}
+              onChange={() =>
+                setSelectedWeatherBtn(selectedWeatherBtn === "hot" ? "" : "hot")
+              }
+            />
             Hot
           </label>
           <label
             htmlFor="warm"
-            className="modal__label modal__label_type_radio"
+            className={`modal__label modal__label_type_radio${
+              selectedWeatherBtn === "warm" ? " modal__label_active" : ""
+            }`}
           >
-            <input id="warm" type="radio" className="modal__radio-input" />
+            <input
+              id="warm"
+              type="radio"
+              className={`modal__radio-input${
+                selectedWeatherBtn === "warm" ? " modal__input_active" : ""
+              }`}
+              checked={selectedWeatherBtn === "warm"}
+              onChange={() =>
+                setSelectedWeatherBtn(
+                  selectedWeatherBtn === "warm" ? "" : "warm"
+                )
+              }
+            />
             Warm
           </label>
           <label
             htmlFor="cold"
-            className="modal__label modal__label_type_radio"
+            className={`modal__label modal__label_type_radio${
+              selectedWeatherBtn === "cold" ? " modal__label_active" : ""
+            }`}
           >
-            <input id="cold" type="radio" className="modal__radio-input" />
+            <input
+              id="cold"
+              type="radio"
+              className={`modal__radio-input${
+                selectedWeatherBtn === "cold" ? " modal__input_active" : ""
+              }`}
+              checked={selectedWeatherBtn === "cold"}
+              onChange={() =>
+                setSelectedWeatherBtn(
+                  selectedWeatherBtn === "cold" ? "" : "cold"
+                )
+              }
+            />
             Cold
           </label>
         </fieldset>
@@ -97,7 +143,6 @@ function App() {
         card={selectedCard}
         onClose={closeActiveModal}
       />
-      <Footer />
     </div>
   );
 }

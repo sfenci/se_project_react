@@ -1,8 +1,10 @@
 .footer {
   color: #000;
-  margin: 171px 40px 24px 40px;
+  margin-top: 171px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   line-height: 20px;
+  font-family: "Cabinet Grotesk Medium", Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
