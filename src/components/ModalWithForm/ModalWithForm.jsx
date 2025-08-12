@@ -1,7 +1,14 @@
 import "./ModalWithForm.css";
 import closeIconDark from "../../images/close-btn-grey.png";
 
-function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  activeModal,
+  onClose,
+  name,
+}) {
   return (
     <div className={`modal ${activeModal === "add-garment" && "modal_opened"}`}>
       <div className="modal__content modal__content--form">
@@ -13,7 +20,7 @@ function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
             className="modal__close-btn-image"
           />
         </button>
-        <form action="" className="modal__form">
+        <form action="" className="modal__form" name={name}>
           {children}
           <button type="submit" className="modal__submit-btn">
             {buttonText}

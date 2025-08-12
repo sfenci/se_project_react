@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import {
+  defaultClothingItems,
+  coordinates,
+  apiKey,
+} from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -18,6 +22,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherBtn, setSelectedWeatherBtn] = useState("");
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -33,7 +38,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -45,7 +50,11 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
         <Footer />
       </div>
       <ModalWithForm
@@ -67,8 +76,8 @@ function App() {
         <label htmlFor="imageURL" className="modal__label">
           Image{" "}
           <input
-            id="imageURl"
-            type="link"
+            id="imageURL"
+            type="url"
             placeholder="Image URL"
             className="modal__input"
           />
@@ -83,6 +92,8 @@ function App() {
           >
             <input
               id="hot"
+              name="weatherType"
+              value="hot"
               type="radio"
               className={`modal__radio-input${
                 selectedWeatherBtn === "hot" ? " modal__input_active" : ""
@@ -102,6 +113,8 @@ function App() {
           >
             <input
               id="warm"
+              name="weatherType"
+              value="warm"
               type="radio"
               className={`modal__radio-input${
                 selectedWeatherBtn === "warm" ? " modal__input_active" : ""
@@ -123,6 +136,8 @@ function App() {
           >
             <input
               id="cold"
+              name="weatherType"
+              value="cold"
               type="radio"
               className={`modal__radio-input${
                 selectedWeatherBtn === "cold" ? " modal__input_active" : ""
