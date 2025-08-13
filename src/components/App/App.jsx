@@ -43,7 +43,9 @@ function App() {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error("Failed to fetch weather data:", error);
+      });
   }, []);
 
   return (
@@ -61,6 +63,7 @@ function App() {
         buttonText="Add garment"
         title="New garment"
         activeModal={activeModal}
+        isOpen={activeModal === "add-garment"}
         onClose={closeActiveModal}
         selectedWeatherBtn={selectedWeatherBtn}
       >
@@ -99,9 +102,7 @@ function App() {
                 selectedWeatherBtn === "hot" ? " modal__input_active" : ""
               }`}
               checked={selectedWeatherBtn === "hot"}
-              onChange={() =>
-                setSelectedWeatherBtn(selectedWeatherBtn === "hot" ? "" : "hot")
-              }
+              onChange={(e) => setSelectedWeatherBtn(e.target.value)}
             />
             Hot
           </label>
@@ -120,11 +121,7 @@ function App() {
                 selectedWeatherBtn === "warm" ? " modal__input_active" : ""
               }`}
               checked={selectedWeatherBtn === "warm"}
-              onChange={() =>
-                setSelectedWeatherBtn(
-                  selectedWeatherBtn === "warm" ? "" : "warm"
-                )
-              }
+              onChange={(e) => setSelectedWeatherBtn(e.target.value)}
             />
             Warm
           </label>
@@ -143,11 +140,7 @@ function App() {
                 selectedWeatherBtn === "cold" ? " modal__input_active" : ""
               }`}
               checked={selectedWeatherBtn === "cold"}
-              onChange={() =>
-                setSelectedWeatherBtn(
-                  selectedWeatherBtn === "cold" ? "" : "cold"
-                )
-              }
+              onChange={(e) => setSelectedWeatherBtn(e.target.value)}
             />
             Cold
           </label>
